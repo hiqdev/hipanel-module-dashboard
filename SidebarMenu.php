@@ -14,7 +14,7 @@ class SidebarMenu extends \hipanel\base\Menu
 
     protected $_where = [
         'after'     => ['header'],
-        'before'    => ['client', 'finance', 'tickets', 'domains', 'servers', 'hosting'],
+        'before'    => ['clients', 'finance', 'tickets', 'domains', 'servers', 'hosting'],
     ];
 
     protected $_items = [
