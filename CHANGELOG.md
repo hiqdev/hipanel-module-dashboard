@@ -3,6 +3,7 @@ hiqdev/hipanel-module-dashboard changelog
 
 ## Under development
 
+- Changed: moved to src
 - Added basics
 - Inited
 
