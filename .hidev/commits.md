@@ -3,6 +3,8 @@ hiqdev/hipanel-module-dashboard commits history
 
 ## Under development
 
+- Added actual dashboard
+    - 74101ca 2015-08-19 + actual dashboard (sol@hiqdev.com)
 - Changed: moved to src
     - 35b6c23 2015-08-19 still moving to src (sol@hiqdev.com)
     - e271464 2015-08-19 php-cs-fixed (sol@hiqdev.com)
