@@ -1,19 +1,12 @@
-parentConfig:
-    github:         hiqdev/hidev-config
-
 package:
     name:           hipanel-module-dashboard
     namespace:      hipanel\modules\dashboard
     label:          DashboardModule
     title:          Dashboard Plugin for HiPanel
     type:           yii2-extension
-    features:       yii2, extension
-    forum:          https://forum.hiqdev.com/hipanel
-    language:       PHP
     keywords:       dashboard, hipanel, plugin
     year:           2014
 
-composer.json:
-    require:
-        yiisoft/yii2:       '~2.0'
-
+require:
+    hiqdev/hidev-config:        "*"
+    hiqdev/hidev-config-php:    "*"

@@ -1,7 +1,10 @@
 hiqdev/hipanel-module-dashboard changelog
 -----------------------------------------
 
-### 0.1.0 under development
+## Under development
 
-- inited
+- Added basics
+- Inited
+
+## Development started 2015-05-21
 
