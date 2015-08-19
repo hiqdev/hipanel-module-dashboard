@@ -47,7 +47,7 @@
     },
     "autoload": {
         "psr-4": {
-            "hipanel\\modules\\dashboard\\": ""
+            "hipanel\\modules\\dashboard\\": "src"
         }
     }
 }
