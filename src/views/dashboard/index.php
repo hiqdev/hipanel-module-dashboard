@@ -1,5 +1,5 @@
 <?php
-$this->title = Yii::t('app','Dashboard');
+$this->title = Yii::t('app', 'Dashboard');
 
 ?>
 <div class="row">
