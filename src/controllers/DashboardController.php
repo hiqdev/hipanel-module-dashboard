@@ -9,13 +9,10 @@
  * @copyright Copyright (c) 2014-2015, HiQDev (https://hiqdev.com/)
  */
 
-/**
- * @link    http://hiqdev.com/hipanel-module-dashboard
- *
- * @license http://hiqdev.com/hipanel-module-dashboard/license
- * @copyright Copyright (c) 2015 HiQDev
- */
 namespace hipanel\modules\dashboard\controllers;
+
+use hipanel\modules\client\controllers\ClientController;
+use Yii;
 
 /**
  * Dashboard controller.
@@ -24,4 +21,15 @@ namespace hipanel\modules\dashboard\controllers;
  */
 class DashboardController extends \hipanel\base\Controller
 {
+    public function actionIndex()
+    {
+        return $this->render('index', ['model' => ClientController::findModel([
+            'id'                  => Yii::$app->user->identity->id,
+            'with_tickets_count'  => 1,
+            'with_domains_count'  => 1,
+            'with_servers_count'  => 1,
+            'with_hosting_count'  => 1,
+            'with_contacts_count' => 1,
+        ])]);
+    }
 }
