@@ -7,6 +7,7 @@ $this->title = Yii::t('app', 'Dashboard');
 ?>
 
 <div class="row">
+<? if (Yii::getAlias('@domain', false)) { ?>
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-globe"></i></span>
@@ -30,6 +31,7 @@ $this->title = Yii::t('app', 'Dashboard');
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
+<? } ?>
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-green"><i class="fa fa-server"></i></span>
