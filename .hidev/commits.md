@@ -3,7 +3,8 @@ hiqdev/hipanel-module-dashboard commits history
 
 ## Under development
 
-- Added actual dashboard
+- Added initial dashboard with 4 blocks for domains, servers, tickets and balance
+    - 4e7b830 2015-08-24 + hide Domain block if not available (sol@hiqdev.com)
     - 74101ca 2015-08-19 + actual dashboard (sol@hiqdev.com)
 - Changed: moved to src
     - 35b6c23 2015-08-19 still moving to src (sol@hiqdev.com)

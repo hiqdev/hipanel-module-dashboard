@@ -3,7 +3,7 @@ hiqdev/hipanel-module-dashboard changelog
 
 ## Under development
 
-- Added actual dashboard
+- Added initial dashboard with 4 blocks for domains, servers, tickets and balance
 - Changed: moved to src
 - Added basics
 - Inited
