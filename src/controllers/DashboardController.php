@@ -26,7 +26,7 @@ class DashboardController extends \hipanel\base\Controller
         return $this->render('index', ['model' => ClientController::findModel([
             'id'                  => Yii::$app->user->identity->id,
             'with_tickets_count'  => 1,
-            'with_domains_count'  => 1,
+            'with_domains_count'  => Yii::getAlias('@domain', false) ? 1 : 0,
             'with_servers_count'  => 1,
             'with_hosting_count'  => 1,
             'with_contacts_count' => 1,
