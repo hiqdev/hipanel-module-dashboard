@@ -15,9 +15,7 @@ class Plugin extends \hiqdev\pluginmanager\Plugin
 {
     protected $_items = [
         'menus' => [
-            [
-                'class' => 'hipanel\modules\dashboard\SidebarMenu',
-            ],
+            'hipanel\modules\dashboard\SidebarMenu',
         ],
         'modules' => [
             'dashboard' => [

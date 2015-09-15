@@ -11,6 +11,8 @@
 
 namespace hipanel\modules\dashboard;
 
+use Yii;
+
 class SidebarMenu extends \hipanel\base\Menu
 {
     protected $_addTo = 'sidebar';
@@ -20,11 +22,14 @@ class SidebarMenu extends \hipanel\base\Menu
         'before' => ['clients', 'finance', 'tickets', 'domains', 'servers', 'hosting'],
     ];
 
-    protected $_items = [
-        'dashboard' => [
-            'label' => 'Dashboard',
-            'url'   => ['/dashboard/dashboard'],
-            'icon'  => 'fa-dashboard',
-        ],
-    ];
+    public function items()
+    {
+        return [
+            'dashboard' => [
+                'label' => Yii::t('app', 'Dashboard'),
+                'url'   => ['/dashboard/dashboard'],
+                'icon'  => 'fa-dashboard',
+            ],
+        ];
+    }
 }
