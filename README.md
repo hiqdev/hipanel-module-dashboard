@@ -5,6 +5,7 @@ Dashboard Plugin for HiPanel
 
 [![Latest Stable Version](https://poser.pugx.org/hiqdev/hipanel-module-dashboard/v/stable.png)](https://packagist.org/packages/hiqdev/hipanel-module-dashboard)
 [![Total Downloads](https://poser.pugx.org/hiqdev/hipanel-module-dashboard/downloads.png)](https://packagist.org/packages/hiqdev/hipanel-module-dashboard)
+[![Dependency Status](https://www.versioneye.com/php/hiqdev:hipanel-module-dashboard/dev-master/badge.svg)](https://www.versioneye.com/php/hiqdev:hipanel-module-dashboard/dev-master)
 
 ## Installation
 
