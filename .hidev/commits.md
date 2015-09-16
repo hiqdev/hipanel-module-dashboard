@@ -4,6 +4,8 @@ hiqdev/hipanel-module-dashboard commits history
 ## Under development
 
 - Added initial dashboard with 4 blocks for domains, servers, tickets and balance
+    - 666c23c 2015-09-16 x fix conflicts (bladeroot@gmail.com)
+    - fa8d59b 2015-09-16 * add translate directive to words (sol@hiqdev.com)
     - 55912d3 2015-09-16 + translation (sol@hiqdev.com)
     - 2360aa3 2015-09-15 localized menu (sol@hiqdev.com)
     - 93c5d58 2015-09-04 + check if @domain exists (sol@hiqdev.com)
