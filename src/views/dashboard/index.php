@@ -13,19 +13,19 @@ $this->title = Yii::t('app', 'Dashboard');
             <span class="info-box-icon bg-aqua"><i class="fa fa-globe"></i></span>
             <div class="info-box-content">
                 <div class="pull-right btn-group">
-                    <? if ($model->count['domains']>1) { ?>
-                        <?= Html::a('view', '@domain/index', ['class' => 'btn btn-xs btn-default']) ?>
+                    <? if ($model->count['domains']) { ?>
+                        <?= Html::a(Yii::t('app', 'View'), '@domain/index', ['class' => 'btn btn-xs btn-default']) ?>
                     <? } ?>
-                    <?= Html::a('buy', '@domain/buy', ['class' => 'btn btn-xs btn-default']) ?>
+                    <?= Html::a(Yii::t('app', 'Buy'), '@domain/buy', ['class' => 'btn btn-xs btn-default']) ?>
                 </div>
-                <span class="info-box-text">Domains</span>
+                <span class="info-box-text"><?= Yii::t('app', 'Domains') ?></span>
                 <span class="info-box-number">
                     <span style="font-size:130%"><?= $model->count['domains'] ?></span>
                 </span>
-            <? if ($model->count['contacts']>1) { ?>
+            <? if ($model->count['contacts']) { ?>
                 <span class="info-box-number">
-                    <span style="font-weight:normal">Contacts:</span> <?= $model->count['contacts'] ?>&nbsp;
-                    <?= Html::a('view', '@contact/index', ['class' => 'btn btn-xs btn-default']) ?>
+                    <span style="font-weight:normal"><?= Yii::t('app', 'Contacts') ?>:</span> <?= $model->count['contacts'] ?>&nbsp;
+                    <?= Html::a(Yii::t('app', 'View'), '@contact/index', ['class' => 'btn btn-xs btn-default']) ?>
                 </span>
             <? } ?>
             </div><!-- /.info-box-content -->
@@ -37,12 +37,12 @@ $this->title = Yii::t('app', 'Dashboard');
             <span class="info-box-icon bg-green"><i class="fa fa-server"></i></span>
             <div class="info-box-content">
                 <div class="pull-right btn-group">
-                    <? if ($model->count['servers']>1) { ?>
-                        <?= Html::a('view', '@server/index', ['class' => 'btn btn-xs btn-default']) ?>
+                    <? if ($model->count['servers']) { ?>
+                        <?= Html::a(Yii::t('app', 'View'), '@server/index', ['class' => 'btn btn-xs btn-default']) ?>
                     <? } ?>
-                    <?= Html::a('buy', '@server/buy', ['class' => 'btn btn-xs btn-default']) ?>
+                    <?= Html::a(Yii::t('app', 'Buy'), '@server/buy', ['class' => 'btn btn-xs btn-default']) ?>
                 </div>
-                <span class="info-box-text">Servers</span>
+                <span class="info-box-text"><?= Yii::t('app', 'Servers') ?></span>
                 <span class="info-box-number">
                     <span style="font-size:130%"><?= $model->count['servers'] ?></span>
                 </span>
@@ -54,10 +54,10 @@ $this->title = Yii::t('app', 'Dashboard');
             <span class="info-box-icon bg-yellow"><i class="fa fa-ticket"></i></span>
             <div class="info-box-content">
                 <div class="pull-right btn-group">
-                    <?= Html::a('view',   '@ticket/index',  ['class' => 'btn btn-xs btn-default']) ?>
-                    <?= Html::a('create', '@ticket/create', ['class' => 'btn btn-xs btn-default']) ?>
+                    <?= Html::a(Yii::t('app', 'View'),   '@ticket/index',  ['class' => 'btn btn-xs btn-default']) ?>
+                    <?= Html::a(Yii::t('app', 'Create'), '@ticket/create', ['class' => 'btn btn-xs btn-default']) ?>
                 </div>
-                <span class="info-box-text">Tickets</span>
+                <span class="info-box-text"><?= Yii::t('app', 'Tickets') ?></span>
                 <span class="info-box-number">
                     <span style="font-size:130%"><?= $model->count['tickets'] ?></span>
                 </span>
@@ -69,8 +69,8 @@ $this->title = Yii::t('app', 'Dashboard');
             <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
             <div class="info-box-content">
                 <div class="pull-right btn-group">
-                    <?= Html::a('view',     '@bill/index',   ['class' => 'btn btn-xs btn-default']) ?>
-                    <?= Html::a('recharge', '@bill/deposit', ['class' => 'btn btn-xs btn-default']) ?>
+                    <?= Html::a(Yii::t('app', 'View'),     '@bill/index',   ['class' => 'btn btn-xs btn-default']) ?>
+                    <?= Html::a(Yii::t('app', 'Recharge'), '@bill/deposit', ['class' => 'btn btn-xs btn-default']) ?>
                 </div>
                 <span class="info-box-text"><?= Yii::t('app', 'Balance') ?></span>
                 <span class="info-box-number">
@@ -78,7 +78,7 @@ $this->title = Yii::t('app', 'Dashboard');
                 </span>
             <? if ($model->credit > 0) { ?>
                 <span class="info-box-number">
-                    <span style="font-weight:normal">Credit:</span>
+                    <span style="font-weight:normal"><?= Yii::t('app', 'Credit') ?>:</span>
                     <?= Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?>
                 </span>
             <? } ?>
