@@ -17,10 +17,7 @@ class SidebarMenu extends \hipanel\base\Menu
 {
     protected $_addTo = 'sidebar';
 
-    protected $_where = [
-        'after'  => ['header'],
-        'before' => ['clients', 'finance', 'tickets', 'domains', 'servers', 'hosting'],
-    ];
+    protected $_where = 'first';
 
     public function items()
     {
