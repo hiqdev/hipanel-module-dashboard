@@ -3,6 +3,8 @@ hiqdev/hipanel-module-dashboard commits history
 
 ## Under development
 
+- Fixed SidebarMenu 'where' to be first
+    - dcf420f 2015-09-24 fixed SidebarMenu where to be first (sol@hiqdev.com)
 - Added initial dashboard with 4 blocks for domains, servers, tickets and balance
     - 666c23c 2015-09-16 x fix conflicts (bladeroot@gmail.com)
     - fa8d59b 2015-09-16 * add translate directive to words (sol@hiqdev.com)
