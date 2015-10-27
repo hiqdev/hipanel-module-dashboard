@@ -3,6 +3,8 @@ hiqdev/hipanel-module-dashboard commits history
 
 ## Under development
 
+- Changed deposit link to @pay/deposit <- @bill/deposit
+    - 5441b82 2015-10-27 * deposit link to @pay/deposit <- @bill/deposit (sol@hiqdev.com)
 - Fixed SidebarMenu 'where' to be first
     - dcf420f 2015-09-24 fixed SidebarMenu where to be first (sol@hiqdev.com)
 - Added initial dashboard with 4 blocks for domains, servers, tickets and balance
@@ -24,7 +26,6 @@ hiqdev/hipanel-module-dashboard commits history
     - d00ce9a 2015-06-02 fixed typo (sol@hiqdev.com)
     - 85cd20d 2015-06-01 used new hidev with YAML config (sol@hiqdev.com)
     - 52ead9c 2015-05-25 fixed namepace (sol@hiqdev.com)
-- Inited
     - 8b687bb 2015-05-21 inited (sol@hiqdev.com)
 
 ## Development started 2015-05-21
