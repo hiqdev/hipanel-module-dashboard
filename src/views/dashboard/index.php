@@ -7,7 +7,7 @@ $this->title = Yii::t('app', 'Dashboard');
 ?>
 
 <div class="row">
-<? if (Yii::getAlias('@domain', false)) { ?>
+<?php if (Yii::getAlias('@domain', false)) { ?>
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-globe"></i></span>
@@ -31,7 +31,9 @@ $this->title = Yii::t('app', 'Dashboard');
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
-<? } ?>
+<?php } ?>
+
+<?php if (Yii::getAlias('@server', false)) { ?>
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-green"><i class="fa fa-server"></i></span>
@@ -49,6 +51,9 @@ $this->title = Yii::t('app', 'Dashboard');
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
+<?php } ?>
+
+<?php if (Yii::getAlias('@ticket', false)) { ?>
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="fa fa-ticket"></i></span>
@@ -64,13 +69,16 @@ $this->title = Yii::t('app', 'Dashboard');
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
+<?php } ?>
+
+<?php if (Yii::getAlias('@bill', false)) { ?>
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
             <div class="info-box-content">
                 <div class="pull-right btn-group">
-                    <?= Html::a(Yii::t('app', 'View'),     '@bill/index',   ['class' => 'btn btn-xs btn-default']) ?>
-                    <?= Html::a(Yii::t('app', 'Recharge'), '@bill/deposit', ['class' => 'btn btn-xs btn-default']) ?>
+                    <?= Html::a(Yii::t('app', 'View'),     '@bill/index',  ['class' => 'btn btn-xs btn-default']) ?>
+                    <?= Html::a(Yii::t('app', 'Recharge'), '@pay/deposit', ['class' => 'btn btn-xs btn-default']) ?>
                 </div>
                 <span class="info-box-text"><?= Yii::t('app', 'Balance') ?></span>
                 <span class="info-box-number">
@@ -85,4 +93,5 @@ $this->title = Yii::t('app', 'Dashboard');
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
+<?php } ?>
 </div>
