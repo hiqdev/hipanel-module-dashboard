@@ -13,21 +13,21 @@ $this->title = Yii::t('app', 'Dashboard');
             <span class="info-box-icon bg-aqua"><i class="fa fa-globe"></i></span>
             <div class="info-box-content">
                 <div class="pull-right btn-group">
-                    <? if ($model->count['domains']) { ?>
+                    <?php if ($model->count['domains']) { ?>
                         <?= Html::a(Yii::t('app', 'View'), '@domain/index', ['class' => 'btn btn-xs btn-default']) ?>
-                    <? } ?>
+                    <?php } ?>
                     <?= Html::a(Yii::t('app', 'Buy'), '@domain/buy', ['class' => 'btn btn-xs btn-default']) ?>
                 </div>
                 <span class="info-box-text"><?= Yii::t('app', 'Domains') ?></span>
                 <span class="info-box-number">
                     <span style="font-size:130%"><?= $model->count['domains'] ?></span>
                 </span>
-            <? if ($model->count['contacts']) { ?>
+            <?php if ($model->count['contacts']) { ?>
                 <span class="info-box-number">
                     <span style="font-weight:normal"><?= Yii::t('app', 'Contacts') ?>:</span> <?= $model->count['contacts'] ?>&nbsp;
                     <?= Html::a(Yii::t('app', 'View'), '@contact/index', ['class' => 'btn btn-xs btn-default']) ?>
                 </span>
-            <? } ?>
+            <?php } ?>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
@@ -39,9 +39,9 @@ $this->title = Yii::t('app', 'Dashboard');
             <span class="info-box-icon bg-green"><i class="fa fa-server"></i></span>
             <div class="info-box-content">
                 <div class="pull-right btn-group">
-                    <? if ($model->count['servers']) { ?>
+                    <?php if ($model->count['servers']) { ?>
                         <?= Html::a(Yii::t('app', 'View'), '@server/index', ['class' => 'btn btn-xs btn-default']) ?>
-                    <? } ?>
+                    <?php } ?>
                     <?= Html::a(Yii::t('app', 'Buy'), '@server/buy', ['class' => 'btn btn-xs btn-default']) ?>
                 </div>
                 <span class="info-box-text"><?= Yii::t('app', 'Servers') ?></span>
@@ -84,12 +84,12 @@ $this->title = Yii::t('app', 'Dashboard');
                 <span class="info-box-number">
                     <span style="font-size:130%"><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?></span>
                 </span>
-            <? if ($model->credit > 0) { ?>
+            <?php if ($model->credit > 0) { ?>
                 <span class="info-box-number">
                     <span style="font-weight:normal"><?= Yii::t('app', 'Credit') ?>:</span>
                     <?= Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?>
                 </span>
-            <? } ?>
+            <?php } ?>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
