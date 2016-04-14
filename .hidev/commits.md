@@ -3,11 +3,13 @@ hiqdev/hipanel-module-dashboard commits history
 
 ## Under development
 
+- Fixed minor issues and code style
+    - 648cf0c 2016-04-14 php-cs-fixed (sol@hiqdev.com)
+    - 5754d18 2016-04-14 rehideved (sol@hiqdev.com)
+    - 2ddd646 2016-04-14 inited empty tests (sol@hiqdev.com)
     - e60e1fb 2016-04-13 Add more responsive blocks placement (andreyklochok@gmail.com)
     - 6a9ac76 2015-12-09 Removed PHP short-tags (d.naumenko.a@gmail.com)
-- Changed deposit link to @pay/deposit <- @bill/deposit
     - 5441b82 2015-10-27 * deposit link to @pay/deposit <- @bill/deposit (sol@hiqdev.com)
-- Fixed SidebarMenu 'where' to be first
     - dcf420f 2015-09-24 fixed SidebarMenu where to be first (sol@hiqdev.com)
 - Added initial dashboard with 4 blocks for domains, servers, tickets and balance
     - 666c23c 2015-09-16 x fix conflicts (bladeroot@gmail.com)
