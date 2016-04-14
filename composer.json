@@ -43,7 +43,7 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "~2.0",
+        "yiisoft/yii2": "^2.0",
         "hiqdev/hipanel-core": "*",
         "hiqdev/hipanel-module-client": "*"
     },
@@ -51,5 +51,12 @@
         "psr-4": {
             "hipanel\\modules\\dashboard\\": "src"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.hiqdev.com"
+        }
+    ]
 }

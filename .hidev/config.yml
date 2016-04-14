@@ -1,12 +1,11 @@
 package:
-    name:           hipanel-module-dashboard
-    namespace:      hipanel\modules\dashboard
-    label:          DashboardModule
-    title:          Dashboard Plugin for HiPanel
     type:           yii2-extension
+    name:           hipanel-module-dashboard
+    title:          Dashboard Plugin for HiPanel
+    headline:       HiPanel Dashboard Module
     keywords:       dashboard, hipanel, plugin
-    year:           2014
+    namespace:      hipanel\modules\dashboard
 
 require:
-    hiqdev/hidev-config:        "*"
-    hiqdev/hidev-config-php:    "*"
+    hiqdev/hidev-php:       "*"
+    hiqdev/hidev-vendor:    "*"

@@ -3,6 +3,8 @@ hiqdev/hipanel-module-dashboard commits history
 
 ## Under development
 
+    - e60e1fb 2016-04-13 Add more responsive blocks placement (andreyklochok@gmail.com)
+    - 6a9ac76 2015-12-09 Removed PHP short-tags (d.naumenko.a@gmail.com)
 - Changed deposit link to @pay/deposit <- @bill/deposit
     - 5441b82 2015-10-27 * deposit link to @pay/deposit <- @bill/deposit (sol@hiqdev.com)
 - Fixed SidebarMenu 'where' to be first
