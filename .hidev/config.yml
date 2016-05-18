@@ -5,7 +5,3 @@ package:
     headline:       HiPanel Dashboard Module
     keywords:       dashboard, hipanel, plugin
     namespace:      hipanel\modules\dashboard
-
-require:
-    hiqdev/hidev-php:       "*"
-    hiqdev/hidev-vendor:    "*"
