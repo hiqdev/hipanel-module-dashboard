@@ -1,8 +1,12 @@
 <?php
 
 return [
-    'menus' => [
-        hipanel\modules\dashboard\SidebarMenu::class,
+    'components' => [
+        'menuManager' => [
+            'menus' => [
+                'dashboard' => hipanel\modules\dashboard\SidebarMenu::class,
+            ],
+        ],
     ],
     'modules' => [
         'dashboard' => [
