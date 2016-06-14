@@ -1,8 +1,14 @@
 <?php
 
+use hipanel\modules\dashboard\widgets\ObjectsCountWidget;
 use yii\helpers\Html;
 
-$this->title = Yii::t('app', 'Dashboard');
+$this->title = Yii::t('hipanel/dashboard', 'Dashboard');
+
+/**
+ * @var array $totalCount
+ * @var \hipanel\modules\client\models\Client $model
+ */
 
 ?>
 
@@ -14,19 +20,24 @@ $this->title = Yii::t('app', 'Dashboard');
                 <div class="info-box-content">
                     <div class="pull-right btn-group">
                         <?php if ($model->count['domains']) : ?>
-                            <?= Html::a(Yii::t('app', 'View'), '@domain/index', ['class' => 'btn btn-xs btn-default']) ?>
+                            <?= Html::a(Yii::t('hipanel', 'View'), '@domain/index',
+                                ['class' => 'btn btn-xs btn-default']) ?>
                         <?php endif ?>
-                        <?= Html::a(Yii::t('app', 'Buy'), '@domain/buy', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?= Html::a(Yii::t('hipanel', 'Buy'), '@domain/buy', ['class' => 'btn btn-xs btn-default']) ?>
                     </div>
-                    <span class="info-box-text"><?= Yii::t('app', 'Domains') ?></span>
+                    <span class="info-box-text"><?= Yii::t('hipanel', 'Domains') ?></span>
                     <span class="info-box-number">
-                        <span style="font-size:130%"><?= $model->count['domains'] ?></span>
+                        <?= ObjectsCountWidget::widget([
+                            'totalCount' => $totalCount['domains'],
+                            'ownCount' => $model->count['domains'],
+                        ]) ?>
                     </span>
                     <?php if ($model->count['contacts']) : ?>
                         <span class="info-box-number">
-                            <span style="font-weight:normal"><?= Yii::t('app', 'Contacts') ?>:</span>
+                            <span style="font-weight:normal"><?= Yii::t('hipanel', 'Contacts') ?>:</span>
                             <?= $model->count['contacts'] ?>&nbsp;
-                            <?= Html::a(Yii::t('app', 'View'), '@contact/index', ['class' => 'btn btn-xs btn-default']) ?>
+                            <?= Html::a(Yii::t('hipanel', 'View'), '@contact/index',
+                                ['class' => 'btn btn-xs btn-default']) ?>
                         </span>
                     <?php endif ?>
                 </div><!-- /.info-box-content -->
@@ -41,13 +52,16 @@ $this->title = Yii::t('app', 'Dashboard');
                 <div class="info-box-content">
                     <div class="pull-right btn-group">
                         <?php if ($model->count['servers']) : ?>
-                            <?= Html::a(Yii::t('app', 'View'), '@server/index', ['class' => 'btn btn-xs btn-default']) ?>
+                            <?= Html::a(Yii::t('hipanel', 'View'), '@server/index', ['class' => 'btn btn-xs btn-default']) ?>
                         <?php endif ?>
-                        <?= Html::a(Yii::t('app', 'Buy'), '@server/buy', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?= Html::a(Yii::t('hipanel', 'Buy'), '@server/buy', ['class' => 'btn btn-xs btn-default']) ?>
                     </div>
-                    <span class="info-box-text"><?= Yii::t('app', 'Servers') ?></span>
+                    <span class="info-box-text"><?= Yii::t('hipanel', 'Servers') ?></span>
                     <span class="info-box-number">
-                        <span style="font-size:130%"><?= $model->count['servers'] ?></span>
+                        <?= ObjectsCountWidget::widget([
+                            'totalCount' => $totalCount['servers'],
+                            'ownCount' => $model->count['servers'],
+                        ]) ?>
                     </span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
@@ -60,12 +74,15 @@ $this->title = Yii::t('app', 'Dashboard');
                 <span class="info-box-icon bg-yellow"><i class="fa fa-ticket"></i></span>
                 <div class="info-box-content">
                     <div class="pull-right btn-group">
-                        <?= Html::a(Yii::t('app', 'View'), '@ticket/index', ['class' => 'btn btn-xs btn-default']) ?>
-                        <?= Html::a(Yii::t('app', 'Create'), '@ticket/create', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?= Html::a(Yii::t('hipanel', 'View'), '@ticket/index', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?= Html::a(Yii::t('hipanel', 'Create'), '@ticket/create', ['class' => 'btn btn-xs btn-default']) ?>
                     </div>
-                    <span class="info-box-text"><?= Yii::t('app', 'Tickets') ?></span>
+                    <span class="info-box-text"><?= Yii::t('hipanel', 'Tickets') ?></span>
                 <span class="info-box-number">
-                    <span style="font-size:130%"><?= $model->count['tickets'] ?></span>
+                        <?= ObjectsCountWidget::widget([
+                            'totalCount' => $totalCount['tickets'],
+                            'ownCount' => $model->count['tickets'],
+                        ]) ?>
                 </span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
@@ -78,17 +95,18 @@ $this->title = Yii::t('app', 'Dashboard');
                 <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
                 <div class="info-box-content">
                     <div class="pull-right btn-group">
-                        <?= Html::a(Yii::t('app', 'View'), '@bill/index', ['class' => 'btn btn-xs btn-default']) ?>
-                        <?= Html::a(Yii::t('app', 'Recharge'), '@pay/deposit', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?= Html::a(Yii::t('hipanel', 'View'), '@bill/index', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?= Html::a(Yii::t('hipanel', 'Recharge'), '@pay/deposit', ['class' => 'btn btn-xs btn-default']) ?>
                     </div>
-                    <span class="info-box-text"><?= Yii::t('app', 'Balance') ?></span>
+                    <span class="info-box-text"><?= Yii::t('hipanel', 'Balance') ?></span>
                     <span class="info-box-number">
                         <span
-                            style="font-size:130%"><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?></span>
+                            style="font-size:130%"><?= Yii::$app->formatter->asCurrency($model->balance,
+                                $model->currency) ?></span>
                     </span>
                     <?php if ($model->credit > 0) : ?>
                         <span class="info-box-number">
-                        <span style="font-weight:normal"><?= Yii::t('app', 'Credit') ?>:</span>
+                        <span style="font-weight:normal"><?= Yii::t('hipanel', 'Credit') ?>:</span>
                             <?= Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?>
                         </span>
                     <?php endif ?>
