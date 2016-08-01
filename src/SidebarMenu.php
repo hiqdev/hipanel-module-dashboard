@@ -23,7 +23,7 @@ class SidebarMenu extends \hipanel\base\Menu
     {
         return [
             'dashboard' => [
-                'label' => Yii::t('app', 'Dashboard'),
+                'label' => Yii::t('hipanel', 'Dashboard'),
                 'url'   => ['/dashboard/dashboard'],
                 'icon'  => 'fa-dashboard',
             ],
