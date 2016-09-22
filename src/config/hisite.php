@@ -7,7 +7,7 @@ return [
                 'sidebar' => [
                     'add' => [
                         'dashboard' => [
-                            'menu' => \hipanel\modules\dashboard\menus\SidebarDashboardMenu::class,
+                            'menu' => \hipanel\modules\dashboard\menus\SidebarMenu::class,
                             'where' => 'first',
                         ],
                     ],
