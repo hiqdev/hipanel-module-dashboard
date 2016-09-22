@@ -9,16 +9,12 @@
  * @copyright Copyright (c) 2015-2016, HiQDev (http://hiqdev.com/)
  */
 
-namespace hipanel\modules\dashboard;
+namespace hipanel\modules\dashboard\menus;
 
 use Yii;
 
-class SidebarMenu extends \hipanel\base\Menu
+class SidebarDashboardMenu extends \hiqdev\menumanager\Menu
 {
-    protected $_addTo = 'sidebar';
-
-    protected $_where = 'first';
-
     public function items()
     {
         return [

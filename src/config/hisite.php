@@ -3,8 +3,15 @@
 return [
     'components' => [
         'menuManager' => [
-            'menus' => [
-                'dashboard' => \hipanel\modules\dashboard\SidebarMenu::class,
+            'items' => [
+                'sidebar' => [
+                    'add' => [
+                        'dashboard' => [
+                            'menu' => \hipanel\modules\dashboard\menus\SidebarDashboardMenu::class,
+                            'where' => 'first',
+                        ],
+                    ],
+                ],
             ],
         ],
         'i18n' => [
