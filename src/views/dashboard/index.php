@@ -89,7 +89,7 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
         </div><!-- /.col -->
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@bill', false)) : ?>
+    <?php if (Yii::getAlias('@bill', false) && Yii::$app->user->can('deposit')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="info-box">
                 <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
