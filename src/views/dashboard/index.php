@@ -19,11 +19,12 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
                 <span class="info-box-icon bg-aqua"><i class="fa fa-globe"></i></span>
                 <div class="info-box-content">
                     <div class="pull-right btn-group">
-                        <?php if ($model->count['domains']) : ?>
-                            <?= Html::a(Yii::t('hipanel', 'View'), '@domain/index',
-                                ['class' => 'btn btn-xs btn-default']) ?>
+                        <?php if ($model->count['domains'] || Yii::$app->user->can('support')) : ?>
+                            <?= Html::a(Yii::t('hipanel', 'View'), '@domain/index', ['class' => 'btn btn-xs btn-default']) ?>
                         <?php endif ?>
-                        <?= Html::a(Yii::t('hipanel', 'Buy'), '@domain/buy', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?php if (Yii::$app->user->can('deposit')) : ?>
+                            <?= Html::a(Yii::t('hipanel', 'Buy'), '@domain/buy', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?php endif ?>
                     </div>
                     <span class="info-box-text"><?= Yii::t('hipanel', 'Domains') ?></span>
                     <span class="info-box-number">
@@ -36,8 +37,7 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
                         <span class="info-box-number">
                             <span style="font-weight:normal"><?= Yii::t('hipanel', 'Contacts') ?>:</span>
                             <?= $model->count['contacts'] ?>&nbsp;
-                            <?= Html::a(Yii::t('hipanel', 'View'), '@contact/index',
-                                ['class' => 'btn btn-xs btn-default']) ?>
+                            <?= Html::a(Yii::t('hipanel', 'View'), '@contact/index', ['class' => 'btn btn-xs btn-default']) ?>
                         </span>
                     <?php endif ?>
                 </div><!-- /.info-box-content -->
@@ -51,10 +51,12 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
                 <span class="info-box-icon bg-green"><i class="fa fa-server"></i></span>
                 <div class="info-box-content">
                     <div class="pull-right btn-group">
-                        <?php if ($model->count['servers']) : ?>
+                        <?php if ($model->count['servers'] || Yii::$app->user->can('support')) : ?>
                             <?= Html::a(Yii::t('hipanel', 'View'), '@server/index', ['class' => 'btn btn-xs btn-default']) ?>
                         <?php endif ?>
-                        <?= Html::a(Yii::t('hipanel', 'Buy'), '@server/buy', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?php if (Yii::$app->user->can('deposit')) : ?>
+                            <?= Html::a(Yii::t('hipanel', 'Buy'), '@server/buy', ['class' => 'btn btn-xs btn-default']) ?>
+                        <?php endif ?>
                     </div>
                     <span class="info-box-text"><?= Yii::t('hipanel', 'Servers') ?></span>
                     <span class="info-box-number">
