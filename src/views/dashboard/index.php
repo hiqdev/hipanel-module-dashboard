@@ -1,6 +1,7 @@
 <?php
 
 use hipanel\modules\dashboard\widgets\ObjectsCountWidget;
+use hipanel\modules\dashboard\widgets\SmallBox;
 use yii\helpers\Html;
 
 $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
@@ -15,105 +16,94 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
 <div class="row">
     <?php if (Yii::getAlias('@domain', false)) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="fa fa-globe"></i></span>
-                <div class="info-box-content">
-                    <div class="pull-right btn-group">
-                        <?php if ($model->count['domains'] || Yii::$app->user->can('support')) : ?>
-                            <?= Html::a(Yii::t('hipanel', 'View'), '@domain/index', ['class' => 'btn btn-xs btn-default']) ?>
-                        <?php endif ?>
-                        <?php if (Yii::$app->user->can('deposit')) : ?>
-                            <?= Html::a(Yii::t('hipanel', 'Buy'), '@domain/buy', ['class' => 'btn btn-xs btn-default']) ?>
-                        <?php endif ?>
-                    </div>
-                    <span class="info-box-text"><?= Yii::t('hipanel', 'Domains') ?></span>
-                    <span class="info-box-number">
-                        <?= ObjectsCountWidget::widget([
-                            'totalCount' => $totalCount['domains'],
-                            'ownCount' => $model->count['domains'],
-                        ]) ?>
-                    </span>
-                    <?php if ($model->count['contacts']) : ?>
-                        <span class="info-box-number">
-                            <span style="font-weight:normal"><?= Yii::t('hipanel', 'Contacts') ?>:</span>
-                            <?= $model->count['contacts'] ?>&nbsp;
-                            <?= Html::a(Yii::t('hipanel', 'View'), '@contact/index', ['class' => 'btn btn-xs btn-default']) ?>
-                        </span>
-                    <?php endif ?>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
-        </div><!-- /.col -->
+            <?php $box = SmallBox::begin([
+                'boxTitle' => Yii::t('hipanel', 'Domains'),
+            ]) ?>
+            <?php $box->beginBody() ?>
+            <?= ObjectsCountWidget::widget([
+                'totalCount' => $totalCount['domains'],
+                'ownCount' => $model->count['domains'],
+            ]) ?>
+            <?php $box->endBody() ?>
+            <?php $box->beginFooter() ?>
+            <?php if ($model->count['domains'] || Yii::$app->user->can('support')) : ?>
+                <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@domain/index', ['class' => 'small-box-footer']) ?>
+            <?php endif ?>
+            <?php if ($model->count['contacts']) : ?>
+                <?= Html::a(Yii::t('hipanel', 'Contacts') . ': ' . $model->count['contacts'] . $box->icon(), '@contact/index', ['class' => 'small-box-footer']) ?>
+            <?php endif ?>
+            <?php if (Yii::$app->user->can('deposit')) : ?>
+                <?= Html::a(Yii::t('hipanel', 'Buy') . $box->icon('fa-shopping-cart'), '@domain/buy', ['class' => 'small-box-footer']) ?>
+            <?php endif ?>
+            <?php $box->endFooter() ?>
+            <?php $box::end() ?>
+        </div>
     <?php endif ?>
 
     <?php if (Yii::getAlias('@server', false)) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="fa fa-server"></i></span>
-                <div class="info-box-content">
-                    <div class="pull-right btn-group">
-                        <?php if ($model->count['servers'] || Yii::$app->user->can('support')) : ?>
-                            <?= Html::a(Yii::t('hipanel', 'View'), '@server/index', ['class' => 'btn btn-xs btn-default']) ?>
-                        <?php endif ?>
-                        <?php if (Yii::$app->user->can('deposit')) : ?>
-                            <?= Html::a(Yii::t('hipanel', 'Buy'), '@server/buy', ['class' => 'btn btn-xs btn-default']) ?>
-                        <?php endif ?>
-                    </div>
-                    <span class="info-box-text"><?= Yii::t('hipanel', 'Servers') ?></span>
-                    <span class="info-box-number">
-                        <?= ObjectsCountWidget::widget([
-                            'totalCount' => $totalCount['servers'],
-                            'ownCount' => $model->count['servers'],
-                        ]) ?>
-                    </span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
-        </div><!-- /.col -->
+            <?php $box = SmallBox::begin([
+                'boxTitle' => Yii::t('hipanel', 'Servers'),
+                'boxIcon' => 'fa-server',
+                'boxColor' => SmallBox::COLOR_TEAL,
+            ]) ?>
+            <?php $box->beginBody() ?>
+            <?= ObjectsCountWidget::widget([
+                'totalCount' => $totalCount['servers'],
+                'ownCount' => $model->count['servers'],
+            ]) ?>
+            <?php $box->endBody() ?>
+            <?php $box->beginFooter() ?>
+            <?php if ($model->count['servers'] || Yii::$app->user->can('support')) : ?>
+                <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@server/index', ['class' => 'small-box-footer']) ?>
+            <?php endif ?>
+            <?php if (Yii::$app->user->can('deposit')) : ?>
+                <?= Html::a(Yii::t('hipanel', 'Buy') . $box->icon('fa-shopping-cart'), '@server/buy', ['class' => 'small-box-footer']) ?>
+            <?php endif ?>
+            <?php $box->endFooter() ?>
+            <?php $box::end() ?>
+        </div>
     <?php endif ?>
 
     <?php if (Yii::getAlias('@ticket', false)) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="fa fa-ticket"></i></span>
-                <div class="info-box-content">
-                    <div class="pull-right btn-group">
-                        <?= Html::a(Yii::t('hipanel', 'View'), '@ticket/index', ['class' => 'btn btn-xs btn-default']) ?>
-                        <?= Html::a(Yii::t('hipanel', 'Create'), '@ticket/create', ['class' => 'btn btn-xs btn-default']) ?>
-                    </div>
-                    <span class="info-box-text"><?= Yii::t('hipanel', 'Tickets') ?></span>
-                <span class="info-box-number">
-                        <?= ObjectsCountWidget::widget([
-                            'totalCount' => $totalCount['tickets'],
-                            'ownCount' => $model->count['tickets'],
-                        ]) ?>
-                </span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
-        </div><!-- /.col -->
+            <?php $box = SmallBox::begin([
+                'boxTitle' => Yii::t('hipanel', 'Tickets'),
+                'boxIcon' => 'fa-ticket',
+                'boxColor' => SmallBox::COLOR_ORANGE,
+            ]) ?>
+            <?php $box->beginBody() ?>
+            <?= ObjectsCountWidget::widget([
+                'totalCount' => $totalCount['tickets'],
+                'ownCount' => $model->count['tickets'],
+            ]) ?>
+            <?php $box->endBody() ?>
+            <?php $box->beginFooter() ?>
+            <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@ticket/index', ['class' => 'small-box-footer']) ?>
+            <?= Html::a(Yii::t('hipanel', 'Create') . $box->icon('fa-plus'), '@ticket/create', ['class' => 'small-box-footer']) ?>
+            <?php $box->endFooter() ?>
+            <?php $box::end() ?>
+        </div>
     <?php endif ?>
 
     <?php if (Yii::getAlias('@bill', false) && Yii::$app->user->can('deposit')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
-                <div class="info-box-content">
-                    <div class="pull-right btn-group">
-                        <?= Html::a(Yii::t('hipanel', 'View'), '@bill/index', ['class' => 'btn btn-xs btn-default']) ?>
-                        <?= Html::a(Yii::t('hipanel', 'Recharge'), '@pay/deposit', ['class' => 'btn btn-xs btn-default']) ?>
-                    </div>
-                    <span class="info-box-text"><?= Yii::t('hipanel', 'Balance') ?></span>
-                    <span class="info-box-number">
-                        <span
-                            style="font-size:130%"><?= Yii::$app->formatter->asCurrency($model->balance,
-                                $model->currency) ?></span>
-                    </span>
-                    <?php if ($model->credit > 0) : ?>
-                        <span class="info-box-number">
-                        <span style="font-weight:normal"><?= Yii::t('hipanel', 'Credit') ?>:</span>
-                            <?= Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?>
-                        </span>
-                    <?php endif ?>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
-        </div><!-- /.col -->
+            <?php $box = SmallBox::begin([
+                'boxTitle' => Yii::t('hipanel', 'Credit'),
+                'boxIcon' => 'fa-money',
+                'boxColor' => SmallBox::COLOR_RED,
+            ]) ?>
+            <?php $box->beginBody() ?>
+            <?php if ($model->credit > 0) : ?>
+                <?= Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?>
+            <?php endif ?>
+            <?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?>
+            <?php $box->endBody() ?>
+            <?php $box->beginFooter() ?>
+            <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@bill/index', ['class' => 'small-box-footer']) ?>
+            <?= Html::a(Yii::t('hipanel', 'Recharge') . $box->icon('fa-credit-card-alt'), '@pay/deposit', ['class' => 'small-box-footer']) ?>
+            <?php $box->endFooter() ?>
+            <?php $box::end() ?>
+        </div>
     <?php endif ?>
 </div>
