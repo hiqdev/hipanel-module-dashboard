@@ -26,7 +26,7 @@ class SmallBox extends Widget
     const COLOR_MAROON = 'bg-maroon';
 
     /**
-     * http://ionicons.com/
+     * http://fontawesome.io/icons/
      * @var string
      */
     public $boxIcon = 'fa-globe';
@@ -38,7 +38,6 @@ class SmallBox extends Widget
     public function init()
     {
         print '<div class="small-box ' . $this->boxColor . '">';
-
     }
 
     public function beginBody()
