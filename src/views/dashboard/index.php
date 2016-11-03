@@ -15,7 +15,7 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
 
 <div class="row">
     <?php if (Yii::getAlias('@domain', false)) : ?>
-        <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel', 'Domains'),
             ]) ?>
@@ -26,7 +26,7 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
             ]) ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
-            <?php if ($model->count['domains'] || Yii::$app->user->can('support')) : ?>
+            <?php if (Yii::$app->user->can('support')) : ?>
                 <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@domain/index', ['class' => 'small-box-footer']) ?>
             <?php endif ?>
             <?php if ($model->count['contacts']) : ?>
@@ -41,7 +41,7 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
     <?php endif ?>
 
     <?php if (Yii::getAlias('@server', false)) : ?>
-        <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel', 'Servers'),
                 'boxIcon' => 'fa-server',
@@ -66,7 +66,7 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
     <?php endif ?>
 
     <?php if (Yii::getAlias('@ticket', false)) : ?>
-        <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel', 'Tickets'),
                 'boxIcon' => 'fa-ticket',
@@ -87,17 +87,17 @@ $this->title = Yii::t('hipanel/dashboard', 'Dashboard');
     <?php endif ?>
 
     <?php if (Yii::getAlias('@bill', false) && Yii::$app->user->can('deposit')) : ?>
-        <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel', 'Credit'),
                 'boxIcon' => 'fa-money',
                 'boxColor' => SmallBox::COLOR_RED,
             ]) ?>
             <?php $box->beginBody() ?>
+            <span style="font-size: 18px"></span><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?>
             <?php if ($model->credit > 0) : ?>
-                <?= Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?>
+                <small><?= Yii::t('hipanel', 'Credit') . ' ' . Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?></small>
             <?php endif ?>
-            <?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
             <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@bill/index', ['class' => 'small-box-footer']) ?>
