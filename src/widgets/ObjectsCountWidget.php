@@ -12,6 +12,8 @@ class ObjectsCountWidget extends Widget
 
     public $totalCount;
 
+    public $fontSize = '18px';
+
     public function run()
     {
         if (Yii::$app->user->can('manage')) {
@@ -23,7 +25,7 @@ class ObjectsCountWidget extends Widget
 
     protected function renderAsManager()
     {
-        echo Html::beginTag('span', ['style' => 'font-size:130%']);
+        echo Html::beginTag('span', ['style' => "font-size: {$this->fontSize}"]);
         echo Yii::t('hipanel/dashboard', '{count} {total}', [
             'count' => $this->totalCount,
             'total' => '<small>' . Yii::t('hipanel/dashboard', '{0, plural, other{total}}', $this->totalCount) . '</small>',
@@ -34,6 +36,6 @@ class ObjectsCountWidget extends Widget
 
     protected function renderAsClient()
     {
-        echo Html::tag('span', $this->ownCount, ['style' => 'font-size:130%']);
+        echo Html::tag('span', $this->ownCount, ['style' => "font-size: {$this->fontSize}"]);
     }
 }
