@@ -4,7 +4,7 @@ use hipanel\modules\dashboard\widgets\ObjectsCountWidget;
 use hipanel\modules\dashboard\widgets\SmallBox;
 use yii\helpers\Html;
 
-$this->title = Yii::t('hipanel/dashboard', 'Dashboard');
+$this->title = Yii::t('hipanel:dashboard', 'Dashboard');
 
 /**
  * @var array $totalCount

@@ -16,12 +16,9 @@ return [
         ],
         'i18n' => [
             'translations' => [
-                'hipanel/dashboard' => [
+                'hipanel:dashboard' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@hipanel/modules/dashboard/messages',
-                    'fileMap' => [
-                        'hipanel/dashboard' => 'dashboard.php',
-                    ],
                 ],
             ],
         ],

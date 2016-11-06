@@ -26,11 +26,11 @@ class ObjectsCountWidget extends Widget
     protected function renderAsManager()
     {
         echo Html::beginTag('span', ['style' => "font-size: {$this->fontSize}"]);
-        echo Yii::t('hipanel/dashboard', '{count} {total}', [
+        echo Yii::t('hipanel:dashboard', '{count} {total}', [
             'count' => $this->totalCount,
-            'total' => '<small>' . Yii::t('hipanel/dashboard', '{0, plural, other{total}}', $this->totalCount) . '</small>',
+            'total' => '<small>' . Yii::t('hipanel:dashboard', '{0, plural, other{total}}', $this->totalCount) . '</small>',
         ]);
-        echo Html::tag('small', ' / ' . Yii::t('hipanel/dashboard', '{0, plural, other{# own}}', $this->ownCount));
+        echo Html::tag('small', ' / ' . Yii::t('hipanel:dashboard', '{0, plural, other{# own}}', $this->ownCount));
         echo Html::endTag('span');
     }
 
