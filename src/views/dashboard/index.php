@@ -1,8 +1,15 @@
 <?php
 
+use hipanel\modules\client\widgets\combo\ClientCombo;
 use hipanel\modules\dashboard\widgets\ObjectsCountWidget;
+use hipanel\modules\dashboard\widgets\SearchForm;
 use hipanel\modules\dashboard\widgets\SmallBox;
+use hipanel\modules\domain\models\DomainSearch;
+use hipanel\modules\finance\models\BillSearch;
+use hipanel\modules\server\models\ServerSearch;
+use hipanel\modules\ticket\models\ThreadSearch;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
 
@@ -24,6 +31,18 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
                 'totalCount' => $totalCount['domains'],
                 'ownCount' => $model->count['domains'],
             ]) ?>
+            <br>
+            <br>
+            <?= SearchForm::widget([
+                'formOptions' => [
+                    'id' => 'domain-search',
+                    'action' => Url::to('@domain/index'),
+                ],
+                'model' => new DomainSearch(),
+                'attribute' => 'domain_like',
+                'buttonColor' => SmallBox::COLOR_AQUA,
+            ]) ?>
+            <div class="clearfix"></div>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
             <?php if (Yii::$app->user->can('support')) : ?>
@@ -52,6 +71,17 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
                 'totalCount' => $totalCount['servers'],
                 'ownCount' => $model->count['servers'],
             ]) ?>
+            <br>
+            <br>
+            <?= SearchForm::widget([
+                'formOptions' => [
+                    'id' => 'server-search',
+                    'action' => Url::to('@server/index'),
+                ],
+                'model' => new ServerSearch(),
+                'attribute' => 'name_like',
+                'buttonColor' => SmallBox::COLOR_TEAL,
+            ]) ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
             <?php if ($model->count['servers'] || Yii::$app->user->can('support')) : ?>
@@ -77,6 +107,17 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
                 'totalCount' => $totalCount['tickets'],
                 'ownCount' => $model->count['tickets'],
             ]) ?>
+            <br>
+            <br>
+            <?= SearchForm::widget([
+                'formOptions' => [
+                    'id' => 'ticket-search',
+                    'action' => Url::to('@ticket/index'),
+                ],
+                'model' => new ThreadSearch(),
+                'attribute' => 'anytext_like',
+                'buttonColor' => SmallBox::COLOR_ORANGE,
+            ]) ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
             <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@ticket/index', ['class' => 'small-box-footer']) ?>
@@ -86,18 +127,33 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@bill', false) && Yii::$app->user->can('deposit')) : ?>
+    <?php if (Yii::getAlias('@bill', false) && (Yii::$app->user->can('deposit') || Yii::$app->user->can('manage'))) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
-                'boxTitle' => Yii::t('hipanel', 'Credit'),
+                'boxTitle' => Yii::t('hipanel/finance', 'Finance'),
                 'boxIcon' => 'fa-money',
                 'boxColor' => SmallBox::COLOR_RED,
             ]) ?>
             <?php $box->beginBody() ?>
-            <span style="font-size: 18px"></span><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?>
+            <span
+                style="font-size: 18px"></span><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?>
             <?php if ($model->credit > 0) : ?>
                 <small><?= Yii::t('hipanel', 'Credit') . ' ' . Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?></small>
             <?php endif ?>
+            <?php if (Yii::$app->user->can('manage')) : ?>
+                <br>
+                <br>
+                <?= SearchForm::widget([
+                    'formOptions' => [
+                        'id' => 'bill-search',
+                        'action' => Url::to('@bill/index'),
+                    ],
+                    'model' => new BillSearch(),
+                    'attribute' => 'client_id',
+                    'inputWidget' => ClientCombo::class,
+                    'buttonColor' => SmallBox::COLOR_RED,
+                ]) ?>
+            <?php endif; ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
             <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@bill/index', ['class' => 'small-box-footer']) ?>
