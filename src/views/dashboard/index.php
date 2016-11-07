@@ -192,4 +192,30 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
+    <?php if (Yii::getAlias('@model', false) && Yii::$app->user->can('manage')) : ?>
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <?php $box = SmallBox::begin([
+                'boxTitle' => Yii::t('hipanel:stock', 'Models'),
+                'boxIcon' => 'fa-cubes',
+                'boxColor' => SmallBox::COLOR_BLUE,
+            ]) ?>
+            <?php $box->beginBody() ?>
+            <br>
+            <br>
+            <?= SearchForm::widget([
+                'formOptions' => [
+                    'id' => 'part-search',
+                    'action' => Url::to('@model/index'),
+                ],
+                'model' => new ModelSearch(),
+                'attribute' => 'model_like',
+                'buttonColor' => SmallBox::COLOR_BLUE,
+            ]) ?>
+            <?php $box->endBody() ?>
+            <?php $box->beginFooter() ?>
+            <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@model/index', ['class' => 'small-box-footer']) ?>
+            <?php $box->endFooter() ?>
+            <?php $box::end() ?>
+        </div>
+    <?php endif ?>
 </div>
