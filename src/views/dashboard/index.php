@@ -1,5 +1,6 @@
 <?php
 
+use hipanel\modules\client\models\ClientSearch;
 use hipanel\modules\client\widgets\combo\ClientCombo;
 use hipanel\modules\dashboard\widgets\ObjectsCountWidget;
 use hipanel\modules\dashboard\widgets\SearchForm;
@@ -213,6 +214,33 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
             <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@model/index', ['class' => 'small-box-footer']) ?>
+            <?php $box->endFooter() ?>
+            <?php $box::end() ?>
+        </div>
+    <?php endif ?>
+
+    <?php if (Yii::getAlias('@client', false) && Yii::$app->user->can('manage')) : ?>
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <?php $box = SmallBox::begin([
+                'boxTitle' => Yii::t('hipanel', 'Clients'),
+                'boxIcon' => 'fa-client',
+                'boxColor' => SmallBox::COLOR_FUCHSIA,
+            ]) ?>
+            <?php $box->beginBody() ?>
+            <br>
+            <br>
+            <?= SearchForm::widget([
+                'formOptions' => [
+                    'id' => 'client-search',
+                    'action' => Url::to('@client/index'),
+                ],
+                'model' => new ClientSearch(),
+                'attribute' => 'login_like',
+                'buttonColor' => SmallBox::COLOR_FUCHSIA,
+            ]) ?>
+            <?php $box->endBody() ?>
+            <?php $box->beginFooter() ?>
+            <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@client/index', ['class' => 'small-box-footer']) ?>
             <?php $box->endFooter() ?>
             <?php $box::end() ?>
         </div>
