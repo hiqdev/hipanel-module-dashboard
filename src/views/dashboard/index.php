@@ -137,24 +137,23 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
                 'boxColor' => SmallBox::COLOR_RED,
             ]) ?>
             <?php $box->beginBody() ?>
-            <span
-                style="font-size: 18px"></span><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?>
+            <span style="font-size: 18px"><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?></span>
             <?php if ($model->credit > 0) : ?>
-                <small><?= Yii::t('hipanel', 'Credit') . ' ' . Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?></small>
+                <br>
+                <span><?= Yii::t('hipanel', 'Credit') . ' ' . Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?></span>
             <?php endif ?>
             <?php if (Yii::$app->user->can('manage')) : ?>
-                <br>
-                <br>
-                <?= SearchForm::widget([
-                    'formOptions' => [
-                        'id' => 'bill-search',
-                        'action' => Url::to('@bill/index'),
-                    ],
-                    'model' => new BillSearch(),
-                    'attribute' => 'client_id',
-                    'inputWidget' => ClientCombo::class,
-                    'buttonColor' => SmallBox::COLOR_RED,
-                ]) ?>
+            <br>
+            <?= SearchForm::widget([
+                'formOptions' => [
+                    'id' => 'bill-search',
+                    'action' => Url::to('@bill/index'),
+                ],
+                'model' => new BillSearch(),
+                'attribute' => 'client_id',
+                'inputWidget' => ClientCombo::class,
+                'buttonColor' => SmallBox::COLOR_RED,
+            ]) ?>
             <?php endif; ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
