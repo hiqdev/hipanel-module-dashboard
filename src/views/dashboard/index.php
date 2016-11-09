@@ -139,8 +139,8 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
             ]) ?>
             <?php $box->beginBody() ?>
             <span style="font-size: 18px"><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?></span>
+            <br>
             <?php if ($model->credit > 0) : ?>
-                <br>
                 <span><?= Yii::t('hipanel', 'Credit') . ' ' . Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?></span>
             <?php endif ?>
             <?php if (Yii::$app->user->can('manage')) : ?>
