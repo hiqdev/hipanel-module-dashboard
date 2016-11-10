@@ -250,7 +250,7 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
     <?php if (Yii::getAlias('@tariff', false) && Yii::$app->user->can('manage')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
-                'boxTitle' => Yii::t('hipanel/finance', 'Tariff'),
+                'boxTitle' => Yii::t('hipanel/finance', 'Tariffs'),
                 'boxIcon' => 'fa-usd',
                 'boxColor' => SmallBox::COLOR_GREEN,
             ]) ?>
