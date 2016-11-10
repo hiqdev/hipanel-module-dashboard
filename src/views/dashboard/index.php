@@ -160,7 +160,9 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
             <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@bill/index', ['class' => 'small-box-footer']) ?>
-            <?= Html::a(Yii::t('hipanel', 'Recharge') . $box->icon('fa-credit-card-alt'), '@pay/deposit', ['class' => 'small-box-footer']) ?>
+            <?php if (Yii::$app->user->can('deposit')) : ?>
+                <?= Html::a(Yii::t('hipanel', 'Recharge') . $box->icon('fa-credit-card-alt'), '@pay/deposit', ['class' => 'small-box-footer']) ?>
+            <?php endif ?>
             <?php $box->endFooter() ?>
             <?php $box::end() ?>
         </div>
