@@ -138,23 +138,24 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
                 'boxColor' => SmallBox::COLOR_RED,
             ]) ?>
             <?php $box->beginBody() ?>
-            <span style="font-size: 18px"><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?></span>
+            <span
+                style="font-size: 18px"><?= Yii::$app->formatter->asCurrency($model->balance, $model->currency) ?></span>
             <br>
             <?php if ($model->credit > 0) : ?>
                 <span><?= Yii::t('hipanel', 'Credit') . ' ' . Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?></span>
             <?php endif ?>
             <?php if (Yii::$app->user->can('manage')) : ?>
-            <br>
-            <?= SearchForm::widget([
-                'formOptions' => [
-                    'id' => 'bill-search',
-                    'action' => Url::to('@bill/index'),
-                ],
-                'model' => new BillSearch(),
-                'attribute' => 'client_id',
-                'inputWidget' => ClientCombo::class,
-                'buttonColor' => SmallBox::COLOR_RED,
-            ]) ?>
+                <br>
+                <?= SearchForm::widget([
+                    'formOptions' => [
+                        'id' => 'bill-search',
+                        'action' => Url::to('@bill/index'),
+                    ],
+                    'model' => new BillSearch(),
+                    'attribute' => 'client_id',
+                    'inputWidget' => ClientCombo::class,
+                    'buttonColor' => SmallBox::COLOR_RED,
+                ]) ?>
             <?php endif; ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
@@ -219,11 +220,11 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@client', false) && Yii::$app->user->can('manage')) : ?>
+    <?php if (Yii::getAlias('@client', false) && Yii::$app->user->can('support')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel', 'Clients'),
-                'boxIcon' => 'fa-client',
+                'boxIcon' => 'fa-users',
                 'boxColor' => SmallBox::COLOR_FUCHSIA,
             ]) ?>
             <?php $box->beginBody() ?>
@@ -237,6 +238,33 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
                 'model' => new ClientSearch(),
                 'attribute' => 'login_like',
                 'buttonColor' => SmallBox::COLOR_FUCHSIA,
+            ]) ?>
+            <?php $box->endBody() ?>
+            <?php $box->beginFooter() ?>
+            <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@client/index', ['class' => 'small-box-footer']) ?>
+            <?php $box->endFooter() ?>
+            <?php $box::end() ?>
+        </div>
+    <?php endif ?>
+
+    <?php if (Yii::getAlias('@tariff', false) && Yii::$app->user->can('manage')) : ?>
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <?php $box = SmallBox::begin([
+                'boxTitle' => Yii::t('hipanel/finance', 'Tariff'),
+                'boxIcon' => 'fa-usd',
+                'boxColor' => SmallBox::COLOR_GREEN,
+            ]) ?>
+            <?php $box->beginBody() ?>
+            <br>
+            <br>
+            <?= SearchForm::widget([
+                'formOptions' => [
+                    'id' => 'client-search',
+                    'action' => Url::to('@client/index'),
+                ],
+                'model' => new ClientSearch(),
+                'attribute' => 'tariff_like',
+                'buttonColor' => SmallBox::COLOR_GREEN,
             ]) ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
