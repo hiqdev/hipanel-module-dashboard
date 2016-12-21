@@ -2,18 +2,6 @@
 
 return [
     'components' => [
-        'menuManager' => [
-            'items' => [
-                'sidebar' => [
-                    'add' => [
-                        'dashboard' => [
-                            'menu' => \hipanel\modules\dashboard\menus\SidebarMenu::class,
-                            'where' => 'first',
-                        ],
-                    ],
-                ],
-            ],
-        ],
         'i18n' => [
             'translations' => [
                 'hipanel:dashboard' => [
@@ -26,6 +14,18 @@ return [
     'modules' => [
         'dashboard' => [
             'class' => \hipanel\modules\dashboard\Module::class,
+        ],
+    ],
+    'container' => [
+        'definitions' => [
+            \hiqdev\thememanager\menus\AbstractSidebarMenu::class => [
+                'add' => [
+                    'dashboard' => [
+                        'menu' => \hipanel\modules\dashboard\menus\SidebarMenu::class,
+                        'where' => 'first',
+                    ],
+                ],
+            ],
         ],
     ],
 ];
