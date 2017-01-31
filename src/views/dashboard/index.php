@@ -53,7 +53,7 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
                 <?= Html::a(Yii::t('hipanel', 'Contacts') . ': ' . $model->count['contacts'] . $box->icon(), '@contact/index', ['class' => 'small-box-footer']) ?>
             <?php endif ?>
             <?php if (Yii::$app->user->can('deposit')) : ?>
-                <?= Html::a(Yii::t('hipanel', 'Buy') . $box->icon('fa-shopping-cart'), '@domain/buy', ['class' => 'small-box-footer']) ?>
+                <?= Html::a(Yii::t('hipanel', 'Buy') . $box->icon('fa-shopping-cart'), '/domain/check', ['class' => 'small-box-footer']) ?>
             <?php endif ?>
             <?php $box->endFooter() ?>
             <?php $box::end() ?>
