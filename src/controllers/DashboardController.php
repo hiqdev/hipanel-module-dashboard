@@ -41,7 +41,7 @@ class DashboardController extends \hipanel\base\Controller
 
         if (Yii::$app->user->can('manage')) {
             if (Yii::getAlias('@domain', false)) {
-                $options['totalCount']['domains'] = Domain::find()->count();
+                $options['totalCount']['domains'] = Domain::find()->where(['states' => 'ok,incoming,outgoing,expired'])->count();
             }
             if (Yii::getAlias('@server', false)) {
                 $options['totalCount']['servers'] = Server::find()->count();
