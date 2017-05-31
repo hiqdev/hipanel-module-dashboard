@@ -11,8 +11,7 @@
 
 namespace hipanel\modules\dashboard\controllers;
 
-use hipanel\modules\client\controllers\ClientController;
-use hipanel\modules\client\models\Contact;
+use hipanel\modules\client\models\Client;
 use hipanel\modules\domain\models\Domain;
 use hipanel\modules\server\models\Server;
 use hipanel\modules\ticket\models\Thread;
@@ -28,7 +27,7 @@ class DashboardController extends \hipanel\base\Controller
     public function actionIndex()
     {
         $options = [
-            'model' => ClientController::findModel([
+            'model' => Client::findOne([
                 'id'                  => Yii::$app->user->identity->id,
                 'with_tickets_count'  => true,
                 'with_domains_count'  => Yii::getAlias('@domain', false) ? true : false,
