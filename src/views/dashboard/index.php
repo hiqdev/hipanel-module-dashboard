@@ -236,7 +236,7 @@ $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
                     'action' => Url::to('@client/index'),
                 ],
                 'model' => new ClientSearch(),
-                'attribute' => 'login_like',
+                'attribute' => 'login_ilike',
                 'buttonColor' => SmallBox::COLOR_FUCHSIA,
             ]) ?>
             <?php $box->endBody() ?>
