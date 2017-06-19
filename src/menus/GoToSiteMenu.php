@@ -20,7 +20,7 @@ class GoToSiteMenu extends \hiqdev\yii2\menus\Menu
     {
         return [
             'return-site' => [
-                'label' => Yii::t('hipanel:dashboard', 'Go to site'),
+                'label' => Yii::t('hipanel.dashboard', 'Go to site'),
                 'url'   => $this->url,
                 'icon'  => 'fa-fw fa-home',
             ],

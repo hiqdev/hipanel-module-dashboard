@@ -14,7 +14,7 @@ use hipanel\modules\ticket\models\ThreadSearch;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = Yii::t('hipanel:dashboard', 'Dashboard');
+$this->title = Yii::t('hipanel.dashboard', 'Dashboard');
 
 /**
  * @var array
