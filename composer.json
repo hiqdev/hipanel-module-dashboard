@@ -58,7 +58,7 @@
     },
     "extra": {
         "config-plugin": {
-            "hisite": "src/config/hisite.php"
+            "hisite": "src/config/web.php"
         }
     },
     "minimum-stability": "dev",
