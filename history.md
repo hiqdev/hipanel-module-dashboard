@@ -2,6 +2,8 @@
 
 ## [Under development]
 
+    - [9640c80] 2017-06-19 csfixed [@hiqsol]
+    - [8b1dbc2] 2017-06-19 fixed require hiqdev/hidev-hiqdev [@hiqsol]
 - Added go to site menu item
     - [ddfa925] 2017-06-19 renamed `web` config <- hisite [@hiqsol]
     - [e1d16c1] 2017-06-19 renamed `hidev.yml` [@hiqsol]
@@ -140,3 +142,5 @@
 [d884b65]: https://github.com/hiqdev/hipanel-module-dashboard/commit/d884b65
 [f7e3855]: https://github.com/hiqdev/hipanel-module-dashboard/commit/f7e3855
 [Under development]: https://github.com/hiqdev/hipanel-module-dashboard/releases
+[9640c80]: https://github.com/hiqdev/hipanel-module-dashboard/commit/9640c80
+[8b1dbc2]: https://github.com/hiqdev/hipanel-module-dashboard/commit/8b1dbc2

@@ -2,6 +2,8 @@
 
 ## [Under development]
 
+- Added go to site menu item ([@hiqsol])
+- Fixed dashboard page: count and links ([@tafid], [@hiqsol], [@SilverFire])
 - Fixed minor issues and code style ([@hiqsol], [@tafid], [@SilverFire])
 - Added initial dashboard with 4 blocks for domains, servers, tickets and balance ([@BladeRoot], [@hiqsol], [@SilverFire])
 - Changed: moved to src ([@hiqsol])

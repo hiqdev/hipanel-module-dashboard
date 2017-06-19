@@ -17,10 +17,9 @@ use yii\helpers\Url;
 $this->title = Yii::t('hipanel:dashboard', 'Dashboard');
 
 /**
- * @var array $totalCount
+ * @var array
  * @var \hipanel\modules\client\models\Client $model
  */
-
 ?>
 
 <div class="row">

@@ -1,12 +1,11 @@
 <?php
-
-/*
- * Dashboard Plugin for HiPanel
+/**
+ * Dashboard Plugin for HiPanel.
  *
  * @link      https://github.com/hiqdev/hipanel-module-dashboard
  * @package   hipanel-module-dashboard
  * @license   BSD-3-Clause
- * @copyright Copyright (c) 2015-2016, HiQDev (http://hiqdev.com/)
+ * @copyright Copyright (c) 2015-2017, HiQDev (http://hiqdev.com/)
  */
 
 namespace hipanel\modules\dashboard\controllers;
@@ -35,7 +34,7 @@ class DashboardController extends \hipanel\base\Controller
                 'with_hosting_count'  => true,
                 'with_contacts_count' => true,
             ]),
-            'totalCount' => []
+            'totalCount' => [],
         ];
 
         if (Yii::$app->user->can('manage')) {

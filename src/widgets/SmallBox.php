@@ -1,4 +1,12 @@
 <?php
+/**
+ * Dashboard Plugin for HiPanel.
+ *
+ * @link      https://github.com/hiqdev/hipanel-module-dashboard
+ * @package   hipanel-module-dashboard
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2015-2017, HiQDev (http://hiqdev.com/)
+ */
 
 namespace hipanel\modules\dashboard\widgets;
 
@@ -26,7 +34,7 @@ class SmallBox extends Widget
     const COLOR_MAROON = 'bg-maroon';
 
     /**
-     * http://fontawesome.io/icons/
+     * http://fontawesome.io/icons/.
      * @var string
      */
     public $boxIcon = 'fa-globe';
@@ -37,27 +45,27 @@ class SmallBox extends Widget
 
     public function init()
     {
-        print '<div class="small-box ' . $this->boxColor . '">';
+        echo '<div class="small-box ' . $this->boxColor . '">';
     }
 
     public function beginBody()
     {
-        print '<div class="inner">' . Html::tag('h3', $this->boxTitle) . '<p>';
+        echo '<div class="inner">' . Html::tag('h3', $this->boxTitle) . '<p>';
     }
 
     public function endBody()
     {
-        print "</p><br></div>";
+        echo '</p><br></div>';
     }
 
     public function beginFooter()
     {
-        print '<div class="icon"><i class="fa ' . $this->boxIcon . '"></i></div><div class="small-box-footer-container">';
+        echo '<div class="icon"><i class="fa ' . $this->boxIcon . '"></i></div><div class="small-box-footer-container">';
     }
 
     public function endFooter()
     {
-        print '<div class="clearfix"></div></div></div>';
+        echo '<div class="clearfix"></div></div></div>';
     }
 
     public function icon($faIcon = 'fa-arrow-circle-right')
