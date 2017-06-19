@@ -19,12 +19,19 @@ return [
     'container' => [
         'definitions' => [
             \hiqdev\thememanager\menus\AbstractSidebarMenu::class => [
-                'add' => [
+                'add' => array_filter([
                     'dashboard' => [
                         'menu' => \hipanel\modules\dashboard\menus\SidebarMenu::class,
                         'where' => 'first',
                     ],
-                ],
+                    'return-site' => empty($params['hipanel.siteUrl']) ? null : [
+                        'menu' => [
+                            'class' => \hipanel\modules\dashboard\menus\GoToSiteMenu::class,
+                            'url'   => $params['hipanel.siteUrl'],
+                        ],
+                        'where' => 'last',
+                    ],
+                ]),
             ],
         ],
     ],
