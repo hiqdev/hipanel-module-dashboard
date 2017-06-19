@@ -4,4 +4,3 @@ package:
     title:          Dashboard Plugin for HiPanel
     headline:       HiPanel Dashboard Module
     keywords:       dashboard, hipanel, plugin
-    namespace:      hipanel\modules\dashboard
