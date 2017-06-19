@@ -10,6 +10,7 @@
 
 return [
     'Dashboard' => 'Главная',
+    'Go to site' => 'Перейти на сайт',
     '{0, plural, other{total}}' => '{0, plural, other{всего}}',
     '{0, plural, other{# own}}' => '{0, plural, one{# свой} other{# своих}}',
 ];

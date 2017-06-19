@@ -12,7 +12,7 @@ namespace hipanel\modules\dashboard\menus;
 
 use Yii;
 
-class ReturnSiteMenu extends \hiqdev\yii2\menus\Menu
+class GoToSiteMenu extends \hiqdev\yii2\menus\Menu
 {
     public $url;
 
