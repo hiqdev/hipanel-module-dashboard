@@ -30,7 +30,7 @@ return [
                 'add' => array_filter([
                     'dashboard' => [
                         'menu' => \hipanel\modules\dashboard\menus\SidebarMenu::class,
-                        'where' => 'first',
+                        'after' => 'check-domain',
                     ],
                     'return-site' => empty($params['hipanel.siteUrl']) ? null : [
                         'menu' => [
