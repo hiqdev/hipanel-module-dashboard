@@ -28,9 +28,15 @@ return [
         'definitions' => [
             \hiqdev\thememanager\menus\AbstractSidebarMenu::class => [
                 'add' => array_filter([
+                    'heading' => [
+                        'menu' => \hipanel\modules\dashboard\menus\HeadingMenu::class,
+                        'where' => 'first',
+                    ],
                     'dashboard' => [
                         'menu' => \hipanel\modules\dashboard\menus\SidebarMenu::class,
-                        'after' => 'check-domain',
+                        'where' => [
+                            'after' => ['heading', 'check-domain'],
+                        ],
                     ],
                     'return-site' => empty($params['hipanel.siteUrl']) ? null : [
                         'menu' => [
