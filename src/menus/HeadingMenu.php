@@ -16,6 +16,8 @@ class HeadingMenu extends \hiqdev\yii2\menus\Menu
 {
     public function items()
     {
-        return [];
+        return [
+            'heading' => '',
+        ];
     }
 }
