@@ -165,7 +165,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@part', false) && Yii::$app->user->can('manage')) : ?>
+    <?php if (Yii::getAlias('@part', false) && Yii::$app->user->can('stock.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel:stock', 'Parts'),
@@ -192,7 +192,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@model', false) && Yii::$app->user->can('manage')) : ?>
+    <?php if (Yii::getAlias('@model', false) && Yii::$app->user->can('stock.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel:stock', 'Models'),
