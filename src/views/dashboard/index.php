@@ -16,6 +16,8 @@ use yii\helpers\Url;
 
 $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
 
+$user = Yii::$app->user;
+
 /**
  * @var array
  * @var \hipanel\modules\client\models\Client $model
@@ -51,7 +53,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
             <?php if ($model->count['contacts']) : ?>
                 <?= Html::a(Yii::t('hipanel', 'Contacts') . ': ' . $model->count['contacts'] . $box->icon(), '@contact/index', ['class' => 'small-box-footer']) ?>
             <?php endif ?>
-            <?php if (Yii::$app->user->can('deposit')) : ?>
+            <?php if ($user->can('deposit')) : ?>
                 <?= Html::a(Yii::t('hipanel', 'Buy') . $box->icon('fa-shopping-cart'), '/domain/check', ['class' => 'small-box-footer']) ?>
             <?php endif ?>
             <?php $box->endFooter() ?>
@@ -59,7 +61,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@server', false) && Yii::$app->user->can('server.read')) : ?>
+    <?php if (Yii::getAlias('@server', false) && $user->can('server.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel', 'Servers'),
@@ -84,10 +86,10 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
             ]) ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
-            <?php if ($model->count['servers'] || Yii::$app->user->can('support')) : ?>
+            <?php if ($model->count['servers'] || $user->can('support')) : ?>
                 <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@server/index', ['class' => 'small-box-footer']) ?>
             <?php endif ?>
-            <?php if (Yii::$app->user->can('deposit')) : ?>
+            <?php if ($user->can('deposit')) : ?>
                 <?= Html::a(Yii::t('hipanel', 'Buy') . $box->icon('fa-shopping-cart'), '@server/buy', ['class' => 'small-box-footer']) ?>
             <?php endif ?>
             <?php $box->endFooter() ?>
@@ -95,7 +97,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@ticket', false) && Yii::$app->user->can('ticket.read')) : ?>
+    <?php if (Yii::getAlias('@ticket', false) && $user->can('ticket.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel', 'Tickets'),
@@ -127,7 +129,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@bill', false) && Yii::$app->user->can('bill.read')) : ?>
+    <?php if (Yii::getAlias('@bill', false) && $user->can('bill.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel:finance', 'Finance'),
@@ -141,7 +143,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
             <?php if ($model->credit > 0) : ?>
                 <span><?= Yii::t('hipanel', 'Credit') . ' ' . Yii::$app->formatter->asCurrency($model->credit, $model->currency) ?></span>
             <?php endif ?>
-            <?php if (Yii::$app->user->can('manage')) : ?>
+            <?php if ($user->can('manage')) : ?>
                 <br>
                 <?= SearchForm::widget([
                     'formOptions' => [
@@ -157,7 +159,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
             <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@bill/index', ['class' => 'small-box-footer']) ?>
-            <?php if (Yii::$app->user->can('deposit')) : ?>
+            <?php if ($user->can('deposit')) : ?>
                 <?= Html::a(Yii::t('hipanel', 'Recharge') . $box->icon('fa-credit-card-alt'), '@pay/deposit', ['class' => 'small-box-footer']) ?>
             <?php endif ?>
             <?php $box->endFooter() ?>
@@ -165,7 +167,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@part', false) && Yii::$app->user->can('stock.read')) : ?>
+    <?php if (Yii::getAlias('@part', false) && $user->can('stock.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel:stock', 'Parts'),
@@ -192,7 +194,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@model', false) && Yii::$app->user->can('stock.read')) : ?>
+    <?php if (Yii::getAlias('@model', false) && $user->can('stock.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel:stock', 'Models'),
@@ -219,7 +221,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@client', false) && Yii::$app->user->can('client.read')) : ?>
+    <?php if (Yii::getAlias('@client', false) && $user->can('client.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel', 'Clients'),
@@ -246,7 +248,7 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@tariff', false) && Yii::$app->user->can('manage')) : ?>
+    <?php if (Yii::getAlias('@tariff', false) && $user->can('manage')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel:finance', 'Tariffs'),
