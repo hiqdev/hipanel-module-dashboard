@@ -167,7 +167,7 @@ $user = Yii::$app->user;
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@part', false) && $user->can('stock.read')) : ?>
+    <?php if (Yii::getAlias('@part', false) && $user->can('part.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel:stock', 'Parts'),
@@ -194,7 +194,7 @@ $user = Yii::$app->user;
         </div>
     <?php endif ?>
 
-    <?php if (Yii::getAlias('@model', false) && $user->can('stock.read')) : ?>
+    <?php if (Yii::getAlias('@model', false) && $user->can('model.read')) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <?php $box = SmallBox::begin([
                 'boxTitle' => Yii::t('hipanel:stock', 'Models'),
