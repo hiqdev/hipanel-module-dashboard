@@ -10,6 +10,7 @@
 
 namespace hipanel\modules\dashboard\controllers;
 
+use hipanel\modules\dashboard\DashboardInterface;
 use hipanel\modules\client\models\Client;
 use hipanel\modules\domain\models\Domain;
 use hipanel\modules\server\models\Server;
@@ -49,6 +50,9 @@ class DashboardController extends \hipanel\base\Controller
             }
         }
 
-        return $this->render('index', $options);
+        $dashboard = Yii::createObject(DashboardInterface::class);
+        $dashboard->setValues($options);
+
+        return $this->render('index');
     }
 }
