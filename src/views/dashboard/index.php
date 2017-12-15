@@ -6,4 +6,6 @@ $this->title = Yii::t('hipanel.dashboard', 'Dashboard');
 
 ?>
 
-<?= DashboardMenu::widget() ?>
+<div class="row">
+    <?= DashboardMenu::widget() ?>
+</div>
