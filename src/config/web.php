@@ -26,6 +26,9 @@ return [
     ],
     'container' => [
         'definitions' => [
+            \hipanel\modules\dashboard\menus\DashboardMenu::class => [
+                'class' => \hipanel\modules\dashboard\menus\DashboardMenu::class,
+            ],
             \hiqdev\thememanager\menus\AbstractSidebarMenu::class => [
                 'add' => array_filter([
                     'dashboard' => [
@@ -43,6 +46,11 @@ return [
                         'where' => 'last',
                     ],
                 ]),
+            ],
+        ],
+        'singletons' => [
+            \hipanel\modules\dashboard\DashboardInterface::class => [
+                'class' => \hipanel\modules\dashboard\Dashboard::class,
             ],
         ],
     ],
