@@ -188,7 +188,10 @@ $user = Yii::$app->user;
             ]) ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
-            <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@part/index', ['class' => 'small-box-footer']) ?>
+                <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@part/index', ['class' => 'small-box-footer']) ?>
+                <?php if ($user->can('part.create')) : ?>
+                    <?= Html::a(Yii::t('hipanel', 'Create') . $box->icon('fa-plus'), '@part/create', ['class' => 'small-box-footer']) ?>
+                <?php endif ?>
             <?php $box->endFooter() ?>
             <?php $box::end() ?>
         </div>
@@ -206,7 +209,7 @@ $user = Yii::$app->user;
             <br>
             <?= SearchForm::widget([
                 'formOptions' => [
-                    'id' => 'part-search',
+                    'id' => 'model-search',
                     'action' => Url::to('@model/index'),
                 ],
                 'model' => new ModelSearch(),
@@ -215,7 +218,10 @@ $user = Yii::$app->user;
             ]) ?>
             <?php $box->endBody() ?>
             <?php $box->beginFooter() ?>
-            <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@model/index', ['class' => 'small-box-footer']) ?>
+                <?= Html::a(Yii::t('hipanel', 'View') . $box->icon(), '@model/index', ['class' => 'small-box-footer']) ?>
+                <?php if ($user->can('model.create')) : ?>
+                    <?= Html::a(Yii::t('hipanel', 'Create') . $box->icon('fa-plus'), '@model/create', ['class' => 'small-box-footer']) ?>
+                <?php endif ?>
             <?php $box->endFooter() ?>
             <?php $box::end() ?>
         </div>
