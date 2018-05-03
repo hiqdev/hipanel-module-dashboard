@@ -1,6 +1,6 @@
 <?php
 
-namespace acceptance\client\tests\dashboard;
+namespace hipanel\modules\dashboard\tests\acceptance\client;
 
 use hipanel\tests\_support\Step\Acceptance\Client;
 use yii\helpers\Url;
