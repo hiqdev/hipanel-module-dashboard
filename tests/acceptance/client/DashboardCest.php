@@ -3,6 +3,7 @@
 namespace hipanel\modules\dashboard\tests\acceptance\client;
 
 use hipanel\tests\_support\Step\Acceptance\Client;
+use Yii;
 use yii\helpers\Url;
 
 class DashboardCest
@@ -13,15 +14,15 @@ class DashboardCest
         $I->amOnPage(Url::to(['/']));
         $I->seeInCurrentUrl('/dashboard/dashboard');
         $I->see('Dashboard');
-        $I->performOn('.content-wrapper', \Codeception\Util\ActionSequence::build()
-            ->see('Domains')
-            ->see('Servers')
-            ->see('Tickets')
-            ->see('Finance')
-            ->dontSee('Clients')
-            ->dontSee('Tariffs')
-            ->dontSee('Models')
-            ->dontSee('Parts')
-        );
+        $I->performOn('.content-wrapper', function () use ($I) {
+            Yii::getAlias('@domain', false) ? $I->see('Domains') : null;
+            Yii::getAlias('@server', false) ? $I->see('Servers') : null;
+            Yii::getAlias('@ticket', false) ? $I->see('Tickets') : null;
+            Yii::getAlias('@finance', false) ? $I->see('Finance') : null;
+            $I->dontSee('Clients');
+            $I->dontSee('Tariffs');
+            $I->dontSee('Models');
+            $I->dontSee('Parts');
+        });
     }
 }
