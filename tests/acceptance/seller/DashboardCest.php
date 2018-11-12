@@ -2,7 +2,7 @@
 
 namespace hipanel\modules\dashboard\tests\acceptance\seller;
 
-use hipanel\tests\_support\SearchBox\DashboardSearchBox;
+use hipanel\tests\_support\DashboardHelper\DashboardSearchBox;
 use hipanel\tests\_support\Step\Acceptance\Seller;
 use Yii;
 use yii\helpers\Url;
