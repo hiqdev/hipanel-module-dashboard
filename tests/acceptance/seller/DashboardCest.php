@@ -27,24 +27,26 @@ class DashboardCest
         });
     }
 
+    /**
+     * @param Seller $I
+     */
     public function ensureFinanceSearchBoxIsValid(Seller $I)
     {
-        $data = [
-            'formAction' => '/finance/bill/index',
-            'inputName'  => 'BillSearch[client_id]',
-            'typeInput'  => 'select'
-        ];
-        (new DashboardSearchBox($I, $data))->ensureSearchBoxContains();
+        $formAction = '/finance/bill/index';
+        $inputName  = 'BillSearch[client_id]';
+        $typeInput  = 'select';
+        (new DashboardSearchBox($I))->ensureSearchBoxContains($formAction, $inputName, $typeInput);
     }
 
+    /**
+     * @param Seller $I
+     */
     public function ensureTariffSearchBoxIsValid(Seller $I)
     {
-        $data = [
-            'formAction' => '/finance/plan/index',
-            'inputName'  => 'PlanSearch[name_ilike]',
-            'typeInput'  => 'input'
-        ];
-        (new DashboardSearchBox($I, $data))->ensureSearchBoxContains();
+        $formAction = '/finance/plan/index';
+        $inputName  = 'PlanSearch[name_ilike]';
+        $typeInput  = 'input';
+        (new DashboardSearchBox($I))->ensureSearchBoxContains($formAction, $inputName, $typeInput);
     }
-
 }
+
