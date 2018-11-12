@@ -2,6 +2,7 @@
 
 namespace hipanel\modules\dashboard\tests\acceptance\seller;
 
+use hipanel\tests\_support\SearchBox\DashboardSearchBox;
 use hipanel\tests\_support\Step\Acceptance\Seller;
 use Yii;
 use yii\helpers\Url;
@@ -25,4 +26,25 @@ class DashboardCest
             Yii::getAlias('@part', false) ? $I->see('Parts') : null;
         });
     }
+
+    public function ensureFinanceSearchBoxIsValid(Seller $I)
+    {
+        $data = [
+            'formAction' => '/finance/bill/index',
+            'inputName'  => 'BillSearch[client_id]',
+            'typeInput'  => 'select'
+        ];
+        (new DashboardSearchBox($I, $data))->ensureSearchBoxContains();
+    }
+
+    public function ensureTariffSearchBoxIsValid(Seller $I)
+    {
+        $data = [
+            'formAction' => '/finance/plan/index',
+            'inputName'  => 'PlanSearch[name_ilike]',
+            'typeInput'  => 'input'
+        ];
+        (new DashboardSearchBox($I, $data))->ensureSearchBoxContains();
+    }
+
 }
