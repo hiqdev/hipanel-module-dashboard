@@ -14,7 +14,7 @@ return [
             'translations' => [
                 'hipanel.dashboard' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@hipanel/modules/dashboard/messages',
+                    'basePath' => dirname(__DIR__) . '/src/messages',
                 ],
             ],
         ],
