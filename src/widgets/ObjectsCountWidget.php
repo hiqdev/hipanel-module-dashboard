@@ -10,11 +10,11 @@
 
 namespace hipanel\modules\dashboard\widgets;
 
+use hipanel\modules\domain\models\Domain;
 use hipanel\widgets\HookTrait;
 use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 class ObjectsCountWidget extends Widget
 {
@@ -26,19 +26,19 @@ class ObjectsCountWidget extends Widget
 
     public ?int $ownCount = null;
 
+    public ?string $route = null;
+
     public string $fontSize = '18px';
 
     public function run(): string
     {
-        if (!is_null($this->totalCount) || !is_null($this->ownCount)) {
-            $html = Yii::$app->user->can('manage') ? $this->renderAsManager() : $this->renderAsClient();
-        } else {
-            $this->url = Url::to(['/dashboard/dashboard/get-count', 'for' => $this->entityName]);
-            $this->registerJsHook('dashboard');
-            $html = Html::beginTag('p', ['id' => $this->getId(), 'style' => "margin-bottom: 2em; font-size: {$this->fontSize};"]);
-            $html .= Html::tag('span', null, ['class' => 'fa fa-pulse fa-fw fa-spinner']);
-            $html .= Html::endTag('p');
+        $html = Html::beginTag('p', ['style' => "margin-bottom: 2em; font-size: {$this->fontSize};"]);
+        $html .= Yii::$app->user->can('manage') ? $this->renderAsManager() : $this->renderAsClient();
+        if (is_null($this->totalCount) && !empty($this->route)) {
+            $this->url = $this->route;
+            $this->registerJsHook('get-total-count');
         }
+        $html .= Html::endTag('p');
 
         return $html;
     }
@@ -46,7 +46,7 @@ class ObjectsCountWidget extends Widget
     protected function renderAsManager(): string
     {
         $html = Yii::t('hipanel.dashboard', '{count} {total}', [
-            'count' => $this->getTotalCount(),
+            'count' => Html::tag('span', Html::tag('span', null, ['class' => 'fa fa-pulse fa-fw fa-spinner']), ['id' => $this->getId()]),
             'total' => Yii::t('hipanel.dashboard', '{0, plural, other{total}}', $this->getTotalCount()),
         ]);
         if ($this->getOwnCount() > 0) {

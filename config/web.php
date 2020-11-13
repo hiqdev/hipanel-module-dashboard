@@ -48,10 +48,5 @@ return [
                 ]),
             ],
         ],
-        'singletons' => [
-            \hipanel\modules\dashboard\DashboardInterface::class => [
-                'class' => \hipanel\modules\dashboard\Dashboard::class,
-            ],
-        ],
     ],
 ];
