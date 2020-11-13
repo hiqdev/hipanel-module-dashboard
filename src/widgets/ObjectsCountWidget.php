@@ -10,40 +10,64 @@
 
 namespace hipanel\modules\dashboard\widgets;
 
+use hipanel\modules\domain\models\Domain;
+use hipanel\widgets\HookTrait;
 use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
 
 class ObjectsCountWidget extends Widget
 {
-    public $ownCount;
+    use HookTrait;
 
-    public $totalCount;
+    public ?string $entityName = null;
 
-    public $fontSize = '18px';
+    public ?int $totalCount = null;
 
-    public function run()
+    public ?int $ownCount = null;
+
+    public ?string $route = null;
+
+    public string $fontSize = '18px';
+
+    public function run(): string
     {
-        if (Yii::$app->user->can('manage')) {
-            $this->renderAsManager();
-        } else {
-            $this->renderAsClient();
+        $html = Html::beginTag('p', ['style' => "margin-bottom: 2em; font-size: {$this->fontSize};"]);
+        $html .= Yii::$app->user->can('manage') ? $this->renderAsManager() : $this->renderAsClient();
+        if (is_null($this->totalCount) && !empty($this->route)) {
+            $this->url = $this->route;
+            $this->registerJsHook('get-total-count');
         }
+        $html .= Html::endTag('p');
+
+        return $html;
     }
 
-    protected function renderAsManager()
+    protected function renderAsManager(): string
     {
-        echo Html::beginTag('span', ['style' => "font-size: {$this->fontSize}"]);
-        echo Yii::t('hipanel.dashboard', '{count} {total}', [
-            'count' => $this->totalCount,
-            'total' => '<small>' . Yii::t('hipanel.dashboard', '{0, plural, other{total}}', $this->totalCount) . '</small>',
+        $html = Yii::t('hipanel.dashboard', '{count} {total}', [
+            'count' => Html::tag('span', Html::tag('span', null, ['class' => 'fa fa-pulse fa-fw fa-spinner']), ['id' => $this->getId()]),
+            'total' => Yii::t('hipanel.dashboard', '{0, plural, other{total}}', $this->getTotalCount()),
         ]);
-        echo Html::tag('small', ' / ' . Yii::t('hipanel.dashboard', '{0, plural, other{# own}}', $this->ownCount));
-        echo Html::endTag('span');
+        if ($this->getOwnCount() > 0) {
+            $html .= ' / ' . Yii::t('hipanel.dashboard', '{0, plural, other{# own}}', $this->getOwnCount());
+        }
+
+        return $html;
     }
 
-    protected function renderAsClient()
+    protected function renderAsClient(): string
     {
-        echo Html::tag('span', $this->ownCount, ['style' => "font-size: {$this->fontSize}"]);
+        return Html::tag('span', $this->getOwnCount(), ['style' => "font-size: {$this->fontSize}"]);
+    }
+
+    public function getOwnCount(): int
+    {
+        return $this->ownCount ?? 0;
+    }
+
+    public function getTotalCount(): int
+    {
+        return $this->totalCount ?? 0;
     }
 }

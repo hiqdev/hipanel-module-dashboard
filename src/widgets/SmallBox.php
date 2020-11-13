@@ -50,12 +50,12 @@ class SmallBox extends Widget
 
     public function beginBody()
     {
-        echo '<div class="inner">' . Html::tag('h3', $this->boxTitle) . '<p>';
+        echo '<div class="inner">' . Html::tag('h3', $this->boxTitle);
     }
 
     public function endBody()
     {
-        echo '</p><br></div>';
+        echo '<br></div>';
     }
 
     public function beginFooter()
