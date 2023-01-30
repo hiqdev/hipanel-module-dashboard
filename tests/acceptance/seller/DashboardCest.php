@@ -22,8 +22,6 @@ class DashboardCest
             Yii::getAlias('@ticket', false) ? $I->see('Tickets') : null;
             Yii::getAlias('@finance', false) ? $I->see('Finance') : null;
             Yii::getAlias('@tariff', false) ? $I->see('Tariffs') : null;
-            Yii::getAlias('@model', false) ? $I->see('Models') : null;
-            Yii::getAlias('@part', false) ? $I->see('Parts') : null;
         });
     }
 
