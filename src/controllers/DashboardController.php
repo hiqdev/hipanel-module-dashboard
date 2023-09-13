@@ -11,7 +11,6 @@
 namespace hipanel\modules\dashboard\controllers;
 
 use hipanel\base\Controller;
-use hipanel\modules\domain\models\Domain;
 
 /**
  * Dashboard controller.
@@ -20,8 +19,23 @@ use hipanel\modules\domain\models\Domain;
  */
 class DashboardController extends Controller
 {
-    public function actionIndex()
+    public function behaviors()
     {
-        return $this->render('index');
+        return array_merge(parent::behaviors(), [
+            'access-dashboard' => [
+                'class' => \hipanel\filters\EasyAccessControl::class,
+                'actions' => [
+                    'index' => '@',
+                ],
+            ],
+        ]);
+    }
+    public function actions()
+    {
+        return [
+            'index'  => [
+                'class' => \hisite\actions\RenderAction::class,
+            ],
+        ];
     }
 }
