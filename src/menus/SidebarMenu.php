@@ -17,6 +17,10 @@ class SidebarMenu extends \hiqdev\yii2\menus\Menu
     public function items()
     {
         return [
+            'main-nav' => [
+                'label' => Yii::t('hipanel', 'Main navigation'),
+                'options' => ['class' => 'header', 'style' => 'text-transform: uppercase;'],
+            ],
             'dashboard' => [
                 'label' => Yii::t('hipanel', 'Dashboard'),
                 'url'   => ['/dashboard/dashboard'],
