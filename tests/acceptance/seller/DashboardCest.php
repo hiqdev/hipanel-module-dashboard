@@ -30,6 +30,8 @@ class DashboardCest
      */
     public function ensureFinanceSearchBoxIsValid(Seller $I)
     {
+        $I->login();
+        $I->amOnPage(Url::to(['/']));
         $formAction = '/finance/bill/index';
         $inputName  = 'BillSearch[client_id]';
         $typeInput  = 'select';
@@ -41,6 +43,8 @@ class DashboardCest
      */
     public function ensureTariffSearchBoxIsValid(Seller $I)
     {
+        $I->login();
+        $I->amOnPage(Url::to(['/']));
         $formAction = '/finance/plan/index';
         $inputName  = 'PlanSearch[name_ilike]';
         $typeInput  = 'input';
