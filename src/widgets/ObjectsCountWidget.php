@@ -10,6 +10,8 @@
 
 namespace hipanel\modules\dashboard\widgets;
 
+use hipanel\actions\IndexAction;
+use hipanel\actions\TotalCountCache;
 use hipanel\modules\domain\models\Domain;
 use hipanel\widgets\HookTrait;
 use Yii;
@@ -32,11 +34,18 @@ class ObjectsCountWidget extends Widget
 
     public function run(): string
     {
+        $isManager = Yii::$app->user->can('manage');
+        $fetchTotalCount = $isManager && is_null($this->totalCount) && !empty($this->route);
+        if ($fetchTotalCount) {
+            $this->totalCount = TotalCountCache::get($this->route);
+            $fetchTotalCount = is_null($this->totalCount);
+        }
+
         $html = Html::beginTag('p', ['style' => "margin-bottom: 2em; font-size: {$this->fontSize};"]);
-        $html .= Yii::$app->user->can('manage') ? $this->renderAsManager() : $this->renderAsClient();
-        if (is_null($this->totalCount) && !empty($this->route)) {
+        $html .= $isManager ? $this->renderAsManager() : $this->renderAsClient();
+        if ($fetchTotalCount) {
             $this->url = $this->route;
-            $this->registerJsHook('get-total-count');
+            $this->registerJsHook(IndexAction::VARIANT_TOTAL_COUNT_RESPONSE);
         }
         $html .= Html::endTag('p');
 
@@ -45,8 +54,9 @@ class ObjectsCountWidget extends Widget
 
     protected function renderAsManager(): string
     {
+        $count = $this->totalCount ?? Html::tag('span', null, ['class' => 'fa fa-pulse fa-fw fa-spinner']);
         $html = Yii::t('hipanel.dashboard', '{count} {total}', [
-            'count' => Html::tag('span', Html::tag('span', null, ['class' => 'fa fa-pulse fa-fw fa-spinner']), ['id' => $this->getId()]),
+            'count' => Html::tag('span', $count, ['id' => $this->getId()]),
             'total' => Yii::t('hipanel.dashboard', '{0, plural, other{total}}', $this->getTotalCount()),
         ]);
         if ($this->getOwnCount() > 0) {
